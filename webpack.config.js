@@ -55,6 +55,25 @@ module.exports = {
         ],
         //要派出的文件
         exclude:/node_modules/
+      },
+      //less文件处理
+      {
+        test:/\.less$/,
+        use:[
+          "style-loader",
+          "css-loader",
+          {
+            loader:'postcss-loader',
+            options:{
+              postcssOptions:{
+                plugins:[
+                  ["postcss-preset-env",{browsers:'last 2 versions'}]
+                ]
+              }
+            }
+          },
+          "less-loader"
+        ]
       }
     ]
   },
